@@ -1,0 +1,33 @@
+import mensajeros.*
+
+describe "prueba de Mensajeros" {
+
+  test "entrega Neo" {
+    paquete.destino(matrix)
+    paquete.estadoDePago(false)
+    assert.notThat(paquete.puedeSerEntregadoPor(neo))
+  }
+
+  test "entrega Jean" {
+    paquete.destino(matrix)
+    paquete.estadoDePago(true)
+    assert.that(paquete.puedeSerEntregadoPor(jeanGray))
+  }
+
+  test "entrega Sara" {
+    paquete.destino(puenteBrooklyn)
+    paquete.estadoDePago(true)
+    saraConnor.pesoActual(70)
+    saraConnor.transporte(camion)
+    camion.acoplados(1)
+    assert.notThat(paquete.puedeSerEntregadoPor(saraConnor))
+  }
+
+  test "entrega Sara en moto" {
+    paquete.destino(puenteBrooklyn)
+    paquete.estadoDePago(true)
+    saraConnor.transporte(moto)
+    assert.that(paquete.puedeSerEntregadoPor(saraConnor))
+  }
+
+}
